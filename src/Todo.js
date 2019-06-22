@@ -16,7 +16,7 @@ function Todo({id, task, completed, removeTodo, toggleTodo, editTodo}) {
   const finishedStyle = completed ? {textDecoration: "line-through", color: "grey"} : {textDecoration: "none", color: "black"};
 
   return (
-    <ListItem>
+    <ListItem style={{height: "64px"}}>
       {editing ? (
         <EditTodoForm id={id} task={task} editTodo={editTodo} toggleEditForm={toggle}/>
         ) : (
