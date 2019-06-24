@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import useToggle from './hooks/useToggle';
 import EditTodoForm from './EditTodoForm';
+
+import {TodosContext} from "./contexts/todos.context";
 
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
@@ -10,15 +12,17 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
-function Todo({id, task, completed, removeTodo, toggleTodo, editTodo}) {
+function Todo({id, task, completed}) {
   const [editing, toggle] = useToggle();
+
+  const {removeTodo, toggleTodo} = useContext(TodosContext);
 
   const finishedStyle = completed ? {textDecoration: "line-through", color: "grey"} : {textDecoration: "none", color: "black"};
 
   return (
     <ListItem style={{height: "64px"}}>
       {editing ? (
-        <EditTodoForm id={id} task={task} editTodo={editTodo} toggleEditForm={toggle}/>
+        <EditTodoForm id={id} task={task} toggleEditForm={toggle}/>
         ) : (
         <>
           <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleTodo(id)} />

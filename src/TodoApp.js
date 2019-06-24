@@ -12,12 +12,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 
 function TodoApp() {
-  const initialTodos = [
-    {id: 1, task: "Walk dog", completed: false},
-    {id: 2, task: "Shower", completed: true},
-    {id: 3, task: "Eat breakfast", completed: false}
-  ];
-  const {todos, addTodo, removeTodo, toggleTodo, editTodo} = useTodoState(initialTodos);
   return (
     <Paper style={{
       padding: 0,
@@ -33,13 +27,8 @@ function TodoApp() {
       <Grid container justify="center" style={{marginTop: "1rem"}}>
         <Grid item xs={11} md={8} lg={4}>
           <TodosProvider>
-            <TodoForm addTodo={addTodo} />
-            <TodoList
-              todos={todos}
-              removeTodo={removeTodo}
-              toggleTodo={toggleTodo}
-              editTodo={editTodo}
-            />
+            <TodoForm />
+            <TodoList />
           </TodosProvider>
         </Grid>
       </Grid>
