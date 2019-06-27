@@ -13,9 +13,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
 function Todo({id, task, completed}) {
-  const [editing, toggle] = useToggle();
+  const {dispatch} = useContext(TodosContext);
 
-  const {removeTodo, toggleTodo} = useContext(TodosContext);
+  const [editing, toggle] = useToggle();
 
   const finishedStyle = completed ? {textDecoration: "line-through", color: "grey"} : {textDecoration: "none", color: "black"};
 
@@ -25,12 +25,12 @@ function Todo({id, task, completed}) {
         <EditTodoForm id={id} task={task} toggleEditForm={toggle}/>
         ) : (
         <>
-          <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleTodo(id)} />
+          <Checkbox tabIndex={-1} checked={completed} onClick={() => dispatch({type: "TOGGLE", id: id})} />
           <ListItemText style={finishedStyle}>
             {task}
           </ListItemText>
           <ListItemSecondaryAction>
-            <IconButton aria-label="Delete" onClick={() => removeTodo(id)}>
+            <IconButton aria-label="Delete" onClick={() => dispatch({type: "REMOVE", id: id})}>
               <DeleteIcon/>
             </IconButton>
             <IconButton aria-label="Edit" onClick={toggle}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import useTodoState from './hooks/useTodoState'
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 
@@ -21,7 +20,7 @@ function TodoApp() {
     }} elevation={0} >
       <AppBar color="primary" position='static' style={{height: "64px"}}>
         <Toolbar>
-          <Typography color="inherit">ToDos with Hooks</Typography>
+          <Typography color="inherit">Todo List with Hooks</Typography>
         </Toolbar>
       </AppBar>
       <Grid container justify="center" style={{marginTop: "1rem"}}>
