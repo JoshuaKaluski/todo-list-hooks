@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import useInputState from './hooks/useInputState';
 
-import {TodosContext} from "./contexts/todos.context";
+import {DispatchContext} from "./contexts/todos.context";
 
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 function TodoForm() {
   const [value, handleChange, reset] = useInputState("");
 
-  const {dispatch} = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
 
   const submitForm = e => {
     e.preventDefault();

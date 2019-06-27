@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import useToggle from './hooks/useToggle';
 import EditTodoForm from './EditTodoForm';
 
-import {TodosContext} from "./contexts/todos.context";
+import {DispatchContext} from "./contexts/todos.context";
 
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
@@ -13,7 +13,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
 function Todo({id, task, completed}) {
-  const {dispatch} = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
 
   const [editing, toggle] = useToggle();
 
